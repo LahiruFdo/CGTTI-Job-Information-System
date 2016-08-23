@@ -15,6 +15,7 @@
 	<title>CGTTI JobInfo</title> 
 	<link rel="stylesheet" type="text/css" href="CSS/jobOffice.css">
 	<link rel="stylesheet" type="text/css" href="CSS/index.css">
+	<link rel="stylesheet" type="text/css" href="CSS/viewJob.css">
 	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=no">
 	<script>
 		
@@ -32,7 +33,7 @@
 			<div class="logo" style="margin-top:10%; color: #575354; font-size:1.0em;">You are logged in as Job Office</div>
 			<div class="buttonArea">
 				<button>View Messages</button>
-				<button>Add Comments</button>
+				<button id="b1">Add Comments</button>
 				<button>Contacts</button>
 			</div><br>
 		</div>
@@ -107,6 +108,57 @@
 		<div class="contentArea" style="position:relative; width:23%; margin-right:1%; float:right;">
 			<?php include 'details.php' ?>
 		</div>
+
+
+<!--Job message box-->
+		<div id="comments" class="msgWindow">
+			<div class="msgBody">
+				<span class="close">x</span>
+				<br>
+				<form action="" method="post">
+				<div class="info">
+					<div class="topics" style="width:14%; padding-top:1%;">
+						<ul>
+							<li>Comment :</li>
+						</ul>
+					</div>
+					<div class="ans" style="padding-left:3%; width:80%;">
+						<ul>
+							<input type="hidden" name="to" value="admin">
+							<input type="hidden" name="from" value="<?php echo "JO";?>">
+							<input type="hidden" name="type" value="comment">
+							<textarea style="cursor:auto;" name="msg" cols="50" rows="5" placeholder="Type your comment here"></textarea>
+						</ul><br>
+					</div>
+				</div>
+				<button id="submit" type="submit" name="submit" value="Register">Send</button>
+				</form>
+				<?php
+					if(isset($_POST['submit'])){include 'sendMsg.php';}
+				?>
+			</div>
+		</div>
+	<!--Job message box-->
+
+	<!--Script to visible msg box-->
+		<script>
+			var msgBox = document.getElementById('comments');
+			var btn1 = document.getElementById("b1");
+			var btn2 = document.getElementById("submit");
+			var span = document.getElementsByClassName("close")[0];
+
+			btn1.onclick = function() {
+				msgBox.style.display = "block";
+			}
+			btn2.onclick = function() {
+				msgBox.style.display = "none";
+			}
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				msgBox.style.display = "none";
+			}
+		</script>		
 		
 	</div>
 </body>
