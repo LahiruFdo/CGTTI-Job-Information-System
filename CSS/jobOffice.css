@@ -154,11 +154,11 @@
 
 .profInfo a{
 	display: block;
+	cursor: pointer;
 }
 
 .profInfo tr:hover{
 	background-color: #DCC1CE;
-	cursor: pointer;
 }
 
 .profInfo th {

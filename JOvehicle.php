@@ -22,12 +22,12 @@
 <body class="body">
 	<?php include 'JOHeader.php'; ?>
 	<div class="pageArea" style="font-family: 'calibri','verdana'; padding-right:2%; padding-left:1.5%;">
-		<form action="JOview2.php" method="GET">
+		<form action="JOvehicle2.php" method="GET">
 		<div class="b"><button id="b" type="submit">GO</button></div>
-		<div class="search" style="width:27%;">
+		<div class="search" style="width:33%;">
 		
-			<div class="searchName">Search By Job No</div>
-			<div class="searchBar"><input id="search" name="searchItem" type="text" placeholder="Enter Job Number Here"/></div>
+			<div class="searchName">Search By Vehicle No.</div>
+			<div class="searchBar"><input id="search" name="searchItem" type="text" placeholder="Enter Vehicle Number Here"/></div>
 
 		</div>
 		</form>
@@ -42,10 +42,12 @@
 					if ($result = mysqli_query($conn,$sql)) {
 						$count = mysqli_num_rows($result);
 						if($count >0){
-					    	echo "<table><tr><th> Job No </th><th> Section </th><th> Job Category </th><th> Registered Date </th><th> Status </th><th> Finished Date </th><th> GatePass No. </th></tr>";
+					    	echo "<table><tr><th> Vehicle No. </th><th> Job No. </th><th> Job Category </th><th> Registered Date </th><th> Status </th><th> Finished Date </th><th> GatePass No. </th></tr>";
 					     	// output data of each row
 					    	while($row = mysqli_fetch_assoc($result)) {
 						    	$a=$row["job_no"];
+						    	$vehicle = $conn->query("SELECT v_no FROM vehicle WHERE job_no='$a'");
+						        $vno = $vehicle->fetch_assoc();
 						    	$scode = $row["sec_code"];
 						        $section = $conn->query("SELECT name FROM section WHERE code='$scode'");
 						        $sec = $section->fetch_assoc();
@@ -63,12 +65,12 @@
 						        else{$state = "Finished";}
 						        $s = $row["gatePass"];
 						        if($s=='T'){$state = "Closed";}
-						        echo "<tr><td><a href='JOviewjob.php?id=$a'>" . $row["job_no"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $sec["name"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["job_typ"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["rDate"] . "</a></td><td><a href='JOviewjob.php?id=$a'>".$state."</td><td><a href='JOviewjob.php?id=$a'>".$Status."</td><td><a href='JOviewjob.php?id=$a'>".$gp."</a></td></tr>";
+						        echo "<tr><td>" . $vno["v_no"]. "</td><td>" . $row["job_no"]. "</td><td>" . $row["job_typ"]. "</td><td>" . $row["rDate"] . "</td><td>".$state."</td><td>".$Status."</td><td>".$gp."</td></tr>";
 						   	}
 					     	echo "</table>";
-					     	if($count==10){echo "<div class='links'><a href='JOview.php?id=$num2'><u>View More</u></a></div>";}}
+					     	if($count==10){echo "<div class='links'><a href='JOvehicle.php?id=$num2'><u>View More</u></a></div>";}}
 					 	else {
-					     	echo "<center>No more Jobs</center>";
+					     	echo "<center>No more vehicles</center>";
 					    }
 					}
 				?>

@@ -15,8 +15,7 @@
 			<li><a  href="JOregister1.php">Add New Job</a></li>	
 			<li><a  href="JOview.php?id=0">View All Jobs</a></li>	
 			<li><a  href="JOnewClosedJ.php?id=0">New Completed Jobs</a></li>
-			<li><a  href="JOnewClosedJ.php?id=0">View Vehicle Details</a></li>
-			<li><a  href="JOnewClosedJ.php?id=0">View Customer Details</a></li>	
+			<li><a  href="JOvehicle.php?id=0">View Vehicle Details</a></li>
 		</ul>
 	</div>
 </header>

@@ -38,33 +38,31 @@
 					if($input!=""){
 						include 'config.php';
 						
-						$sql = "SELECT * FROM jobservce WHERE job_no LIKE '%$input%'";	
+						$sql = "SELECT * FROM vehicle WHERE v_no LIKE '%$input%'";	
 						
 						if ($result = mysqli_query($conn,$sql)) {
 							$count = mysqli_num_rows($result);
 							if($count >0){
-						    	echo "<table><tr><th> Job No </th><th> Section </th><th> Job Category </th><th> Registered Date </th><th> Status </th><th> Finished Date </th><th> GatePass No. </th></tr>";
+						    	echo "<table><tr><th> Vehicle No. </th><th> Job No. </th><th> Job Category </th><th> Registered Date </th><th> Status </th><th> Finished Date </th><th> GatePass No. </th></tr>";
 						     	// output data of each row
 						    	while($row = mysqli_fetch_assoc($result)) {
-							    	$a=$row["job_no"];
-							    	$scode = $row["sec_code"];
-							        $section = $conn->query("SELECT name FROM section WHERE code='$scode'");
-							        $sec = $section->fetch_assoc();
-							        $jn = $row["job_no"];
-							        $gp = $conn->query("SELECT gtpass_no FROM account WHERE job_no='$jn'");
+						    		$jobNo = $row["job_no"];
+							        $jobDetails = $conn->query("SELECT * FROM jobservce WHERE job_no='$jobNo'");
+							        $jobDetails = $jobDetails->fetch_assoc();
+							        $gp = $conn->query("SELECT gtpass_no FROM account WHERE job_no='$jobNo'");
 							        $gp = $gp->fetch_assoc();
 							        if($gp==""){
 							        	$gp="-";
 							        }
-							        $Status = $row["closedDate"];
+							        $Status = $jobDetails["closedDate"];
 							        if($Status==""){
 							        	$state = "Unfinished";
 							        	$Status="-";
 							        }
 							        else{$state = "Finished";}
-							        $s = $row["gatePass"];
+							        $s = $jobDetails["gatePass"];
 							        if($s=='T'){$state = "Closed";}
-							        echo "<tr><td><a href='JOviewjob.php?id=$a'>" . $row["job_no"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $sec["name"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["job_typ"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["rDate"] . "</a></td><td><a href='JOviewjob.php?id=$a'>".$state."</td><td><a href='JOviewjob.php?id=$a'>".$Status."</td><td><a href='JOviewjob.php?id=$a'>".$gp."</a></td></tr>";
+							        echo "<tr><td>" . $jobNo. "</td><td>" . $row["job_no"]. "</td><td>" . $jobDetails["job_typ"]. "</td><td>" . $jobDetails["rDate"] . "</td><td>".$state."</td><td>".$Status."</td><td>".$gp."</td></tr>";
 							   	}
 						     	echo "</table>";}
 						 	else {
