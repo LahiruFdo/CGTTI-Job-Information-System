@@ -2,11 +2,11 @@
 	if(isset($_GET['searchItem'])){
 		$input = $_GET['searchItem'];
 		if($input == ""){
-			header('location:JOview.php');
+			header('location:JOvehicle.php');
 		}
 	}
 	else{
-		header('location:JOview.php');
+		header('location:JOvehicle.php');
 	}
 ?>
 <!DOCTYPE html>
