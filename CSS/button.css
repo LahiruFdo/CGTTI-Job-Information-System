@@ -1,0 +1,124 @@
+.message-button{
+	position: relative;
+	height: 7em;
+	background-color:rgb(247,170,32);
+	width:32.5%;
+	float:left;
+	color:black;
+	font-size: 1.2em;
+	/*border: 0.5em outset blue;*/
+}
+
+.comment-button{
+	position: relative;
+	height: 7em;
+	background-color:rgb(247,170,32);
+	width:32.5%;
+	float:left;
+	margin-left: 1%;
+	margin-top: 0;
+	color:black;
+	font-size: 1.2em;
+	/*border: 0.5em outset #e67e22;*/
+}
+
+.detail-button-area{
+	position: relative;
+	height: 7em;
+	width:33%;
+	float:left;
+	margin-left: 1%;
+	margin-top: 0;
+	color:black;
+}
+
+.contact-button{
+	position: relative;
+	height: 3.4em;
+	padding-right:1%;
+	background-color:rgb(247,170,32);
+	width:100%;
+	float:left;
+	margin-top: 0;
+	font-size: 1.2em;
+	padding-left: 5%;
+	padding-top: 4%;
+	color:black;
+	/*border: 0.5em outset blue;*/
+}
+
+.details-button{
+	position: relative;
+	height: 3.4em;
+	padding-right:1%;
+	background-color:rgb(247,170,32);
+	width:100%;
+	float:left;
+	margin-top: 0.2em;
+	font-size: 1.2em;
+	padding-left: 5%;
+	padding-top: 4%;
+	color:black;
+}
+
+
+.inner-left-corner{
+	position: relative;
+	width: 100%;
+	height: 70%;
+	opacity: 0.3;
+	border-bottom-left-radius: 37%;
+	background-color:#333;
+	font-size: 1.0em;
+	padding: 5%;
+	padding-left: 22%;
+}
+
+.inner-mid-corner{
+	position: relative;
+	float: left;
+	width: 50px;
+	height: 50px;
+	opacity: 0.3;
+	border-bottom-right-radius: 37%;
+	background-color:#333;
+	font-size: 1.0em;
+	padding-left: 5%;
+	padding-top:5%;
+}
+
+.button-text-1{
+	position: relative;
+	float:left;
+	margin-top: 0;
+	padding:5%;
+	width: 100%;
+	text-align: center;
+	/*background-color: white;*/
+}
+
+.button-text-2{
+	position: relative;
+	float:right;
+	padding:5%;
+	padding-top: 8%;
+	padding-right: 8%;
+	padding-left: 0%;
+	width: 62%;
+	text-align: center;
+	/*background-color: white;*/
+}
+
+.inbox-number{
+	background-color: red;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	position: relative;
+	float: left;
+	padding: 1%;
+	text-align: center;
+	font-size: 0.9em;
+	/*border: 0.1em solid black;*/
+}
+

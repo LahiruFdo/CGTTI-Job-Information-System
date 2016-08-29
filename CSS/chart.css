@@ -1,0 +1,58 @@
+.pieContainer {
+          height: 250px;
+     }
+     .pieBackground {
+          background-color: grey;
+          position: absolute;
+          width: 250px;
+          height: 250px;
+          -moz-border-radius: 125px;
+          -webkit-border-radius: 125px;
+          -o-border-radius: 125px;
+          border-radius: 125px;
+          
+     } 
+     .pie {
+          position: absolute;
+          width: 250px;
+          height: 250px;
+          -moz-border-radius: 125px;
+          -webkit-border-radius: 125px;
+          -o-border-radius: 125px;
+          border-radius: 125px;
+          clip: rect(0px, 250px, 250px, 125px);
+     }
+     
+     #pieSliceBlue .pie {
+          background-color: #1b458b;
+          -webkit-transform:rotate(180deg);
+          -moz-transform:rotate(180deg);
+          -o-transform:rotate(180deg);
+          transform:rotate(180deg);
+     }
+     #pieSliceBlue2 {
+          -webkit-transform:rotate(180deg);
+          -moz-transform:rotate(180deg);
+          -o-transform:rotate(180deg);
+          transform:rotate(180deg);
+     }
+     #pieSliceBlue2 .pie {
+          background-color: #1b458b;
+          -webkit-transform:rotate(40deg);
+          -moz-transform:rotate(40deg);
+          -o-transform:rotate(40deg);
+          transform:rotate(40deg);
+     }
+     #pieSliceRed {
+          -webkit-transform:rotate(220deg);
+          -moz-transform:rotate(220deg);
+          -o-transform:rotate(220deg);
+          transform:rotate(220deg);
+     }
+     #pieSliceRed .pie {
+          background-color: #cc0000;
+          -webkit-transform:rotate(140deg);
+          -moz-transform:rotate(140deg);
+          -o-transform:rotate(140deg);
+          transform:rotate(140deg);
+     }

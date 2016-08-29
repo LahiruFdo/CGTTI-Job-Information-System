@@ -4,7 +4,7 @@
 	<div class="code">
 		<p>PJ</p>
 		<p>VM</p>
-		<p>BC</p>
+		<p>BJ</p>
 		<p>M</p>
 		<p>TRG</p>
 		<p>PRG</p>
@@ -16,7 +16,7 @@
 	<div class="mean">
 		<p>- Private Jobs</p>
 		<p>- Vehicle maintain</p>
-		<p>- Bus Company</p>
+		<p>- Bus Jobs</p>
 		<p>- Institute Maintainance</p>
 		<p>- Training (Full Time)</p>
 		<p>- Training (Part Time)</p>

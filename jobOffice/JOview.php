@@ -13,25 +13,31 @@
 <head>
 
 	<title>CGTTI JobInfo</title> 
-	<link rel="stylesheet" type="text/css" href="CSS/jobOffice.css">
-	<link rel="stylesheet" type="text/css" href="CSS/index.css">
-	<link rel="stylesheet" type="text/css" href="CSS/view.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/jobOffice.css">
+	<!--<link rel="stylesheet" type="text/css" href="CSS/index.css">-->
+	<link rel="stylesheet" type="text/css" href="../CSS/view.css">
 	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=no">
 </head>
 
 <body class="body">
 	<?php include 'JOHeader.php'; ?>
 	<div class="pageArea" style="font-family: 'calibri','verdana'; padding-right:2%; padding-left:1.5%;">
+		<form action="JOview2.php" method="GET">
+		<div class="search-button"><button id="b" type="submit">GO</button></div>
+		<div class="search" style="width:27%;">
+		
+			<div class="searchName" style="padding-top:2.4%;">Search By Job No.</div>
+			<div class="searchBar"><input id="search" name="searchItem" type="text" placeholder="Enter Job Number Here"/></div>
+
+		</div>
+		</form>
 		<div class="searchResults">
-			<div class="windowBttn">
-				<button><b>New Completed Jobs</b></button>
-			</div>
 			<div class="profInfo">
 				<?php
-					$num1 = 0;
+					$num1 = $num;
 					$num2 = $num1+10;
-					include 'config.php';
-					$sql = "SELECT * FROM jobservce WHERE closedDate != '' ORDER BY closedDate DESC LIMIT $num1,$num2 ";	
+					include '../config.php';
+					$sql = "SELECT * FROM jobservce ORDER BY id DESC LIMIT $num1,$num2 ";	
 					
 					if ($result = mysqli_query($conn,$sql)) {
 						$count = mysqli_num_rows($result);
@@ -57,12 +63,12 @@
 						        else{$state = "Finished";}
 						        $s = $row["gatePass"];
 						        if($s=='T'){$state = "Closed";}
-						        echo "<tr><td><a href='JOviewjob.php?id=$a'>" . $row["job_no"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $sec["name"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["job_typ"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["rDate"] . "</a></td><td><a href='JOviewjob.php?id=$a'>".$state."</td><td><a href='JOviewjob.php?id=$a'>".$Status."</td><td><a href='JOviewjob.php?id=$a'>".$gp."</td></tr>";
+						        echo "<tr><td><a href='JOviewjob.php?id=$a'>" . $row["job_no"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $sec["name"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["job_typ"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["rDate"] . "</a></td><td><a href='JOviewjob.php?id=$a'>".$state."</td><td><a href='JOviewjob.php?id=$a'>".$Status."</td><td><a href='JOviewjob.php?id=$a'>".$gp."</a></td></tr>";
 						   	}
 					     	echo "</table>";
 					     	if($count==10){echo "<div class='links'><a href='JOview.php?id=$num2'><u>View More</u></a></div>";}}
 					 	else {
-					     	echo "<center>No new finished Jobs at the moment</center>";
+					     	echo "<center>No more Jobs</center>";
 					    }
 					}
 				?>
@@ -72,3 +78,5 @@
 	</div>
 </body>
 </html>
+
+

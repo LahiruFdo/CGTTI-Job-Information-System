@@ -1,3 +1,12 @@
+.detail-content-area{
+	position: relative;
+	padding: 2%;
+	height: 70%;
+	border:  0.05em solid #2c3e50;
+	border-radius: 0.5em;
+	width: auto;
+}
+
 .titleArea{
 	margin: 2%;
 	height: 100%;

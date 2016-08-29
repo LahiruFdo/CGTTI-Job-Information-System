@@ -6,7 +6,7 @@
 
 body {
 	font-family: 'Calibri','Verdana', 'Arial', Helvetica san-serif;
-	background-color: #fff;
+	background-color: rgb(255,249,230);
 }
 
 a {
@@ -202,7 +202,7 @@ ul#nav li a.selected{
 	height:100%;
 	width:100%;
 	font-size : 20px;
-	font-family: calibri;
+	font-family: 'calibri';
 	color: white;
 }
 
@@ -263,12 +263,12 @@ ul#nav li a.selected{
 }
 
 .pageArea{
-	width: auto;
+	width: 82%;
 	margin-top:0%;
 	margin-left: 18%;
 	padding-top:7%;
 	padding-left:1%;
-	background-color: #fff;
+	background-color: rgb(255,249,230);
 	height:100%;
 }/*#F8FAEB;*/
 

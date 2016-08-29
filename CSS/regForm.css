@@ -1,0 +1,316 @@
+.form-area{
+	position: relative;
+	float: left;
+	background-color: #f2f2f2;
+	padding: 1%;
+	width: 45%;
+	border:  0.05em solid #2c3e50;
+	border-radius: 0.7em;
+	margin-left: 2%;
+	margin-top: 2%;
+	height: 450px;
+	display: block;
+}
+
+.form-area h4{
+	font-size: 0.85em;
+}
+
+.topBar{
+	color: #fff;
+	text-shadow: 0px 1px solid #000;
+	background-color: #575354;
+	padding: 0.4%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	font-size: 1em;
+	width: 100%;
+	font-family: verdana;
+	text-align: center;
+}
+
+.list{
+	position: relative;
+	float: left;
+	width:100%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	/*border: 0.05em solid #DFBEA8;*/
+}
+
+.form-fields1{
+	position: relative;
+	float: left;
+	padding-left: 5%;
+	padding-top: 4%;
+	padding-bottom: 0%;
+	width: 30%;
+	/*background-color: yellow;*/
+	font-size: 1.1em;
+}
+
+.form-fields{
+	position: relative;
+	float: left;
+	padding-left: 5%;
+	padding-top: 4%;
+	padding-bottom: 3%;
+	width: 30%;
+	/*background-color: yellow;*/
+	font-size: 1.1em;
+}
+
+.form-dots{
+	position: relative;
+	float: left;
+	width: 5%;
+	padding-left: 3%;
+	padding-top: 4%;
+	padding-bottom: 3%;
+}
+
+.form-dots1{
+	position: relative;
+	float: left;
+	width: 5%;
+	padding-left: 3%;
+	padding-top: 3.3%;
+	padding-bottom: 1%;
+}
+
+.form-dots2{
+	position: relative;
+	float: left;
+	width: 5%;
+	padding-left: 3%;
+	padding-top: 4%;
+	padding-bottom: 0%;
+}
+
+.form-inputs{
+	position: relative;
+	float: right;
+	padding-right: 3%;
+	padding-top: 3.5%;
+	padding-bottom: 2%;
+	padding-left: 2%;
+	width: 65%;
+	/*background-color: green;*/
+}
+
+.form-inputs1{
+	position: relative;
+	float: right;
+	padding-right: 3%;
+	padding-top: 4%;
+	padding-bottom: 0%;
+	padding-left: 4%;
+	width: 65%;
+	font-size: 1.1em;
+	/*background-color: green;*/
+}
+
+.form-inputs input{
+	border: 0.05em solid #DFBEA8;
+	color: black;
+	padding: 0.35em;
+	padding-left: 0.8em;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	font-weight: 200;
+	font-size: 0.9em;
+	cursor: auto;
+	outline: none;
+	text-align: left;
+	width:100%;
+}
+
+.form-inputs textarea{
+	border: 0.05em solid #DFBEA8;
+	color: black;
+	padding: 0.35em;
+	padding-left: 0.7em;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	font-weight: 200;
+	font-size: 1em;
+	cursor: auto;
+	outline: none;
+	text-align: left;
+	width:100%;
+	margin-left: 0%;
+	font-family: 'calibri';
+}
+
+.next-button{
+	position: absolute;
+	/*float: right;*/
+	margin-top: 15%;
+	margin-left: 86%;
+	width: 8%;
+	height: 9%;
+	display: block;	
+	text-align: center;
+		
+}
+
+.next-button input{
+	position: relative;
+	text-decoration: None;
+	width:100%;
+	height: 100%;
+	background-color: rgb(247,170,32);
+	border-radius: 0.4em;
+	cursor: pointer;
+	color: #fff;
+	text-decoration-style: bold;
+	font-size: 1.3em;
+}
+
+.register-button input{
+	position: relative;
+	text-decoration: None;
+	width:100%;
+	height: 100%;
+	background-color: rgb(247,170,32);
+	border-radius: 0.4em;
+	cursor: pointer;
+	color: #fff;
+	text-decoration-style: bold;
+	font-size: 1.3em;
+}
+
+.radio-tab{
+	position: relative;
+	float: left;
+	width: 35%;
+}
+
+.code{
+	position: relative;
+	float: left;
+	width: 23%;
+	padding-left: 4%;
+	font-size: 0.8em;
+}
+
+.mean{
+	position: relative;
+	float: left;
+	width: 77%;
+	font-size: 0.8em;
+}
+
+.numArea{
+	position: relative;
+	float: left;
+	width: 100%;
+	margin-left: 0.5%;
+}
+
+.numBox1{
+	position: relative;
+	float: left;
+	margin-top: 10%;
+	width: 15%;
+	height: 8%;
+	background-color: #fff;
+	border: 0.03em solid #2c3e50;
+	display: block;
+	padding-top: 2%;
+	padding-bottom: 2%;
+	text-align: center;
+	font-size: 1.05em;
+}
+
+.slash{
+	position: relative;
+	float: left;
+	margin-top: 10%;
+	width: 6%;
+	height: 8%;
+	font-size: 1.5em;
+	padding-top: 1%;
+	padding: 1%;
+	text-align: center;
+	/*background-color: red;*/
+}
+
+.round-button1{
+	position: absolute;
+	margin-top: 7%;
+	margin-left: 72%;
+	width:60px;
+	height: 60px;
+	background-color: rgb(247,170,32);
+	border-radius: 50%;
+	display: block;
+	box-shadow:  0 0 10px  rgba(0,0,0,0.6);
+	-moz-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+	-o-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+	cursor: pointer;
+}
+
+.round-button2{
+	position: absolute;
+	margin-top: 13%;
+	margin-left: 72%;
+	width:60px;
+	height: 60px;
+	background-color: rgb(247,170,32);
+	border-radius: 50%;
+	display: block;
+	box-shadow:  0 0 10px  rgba(0,0,0,0.6);
+	-moz-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+	-o-box-shadow: 0 0 10px  rgba(0,0,0,0.6);
+	cursor: pointer;
+}
+
+.titleArea{
+	margin: 2%;
+	margin-top: 1%;
+	margin-left: 1%;
+	height: 100%;
+	background-color: #fff;
+	border: 0.1em solid rgb(247,170,32);;
+}
+
+.theme{
+	width:95%;
+	padding-left: 2%;
+	font-size: 0.8em;
+}
+
+.Number{
+	font-size: 0.9em;
+	padding-left: 2%;
+	color: #6B1A36;
+}
+
+.status{
+	position: relative;
+	float: right;
+	padding-left: 5%;
+	font-size: 0.6em;
+	padding-top: 0.8%;
+}
+
+.button-action1{
+	display: none;
+	position: absolute;
+	margin-top: 12%;
+	margin-left: 70%;
+	background-color:rgb(254,217,139);
+	color: black;
+	text-align: center;
+	font-size: 0.8em;
+	width: 8%;
+	z-index: 1;
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+
+
