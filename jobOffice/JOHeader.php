@@ -3,7 +3,7 @@
 		<div class="header1">
 			<div class="logo">CGTTI - <span style="font-size: 0.65em;"> Job Information System</span>
 			</div>
-			<div class="loginAs">Job Office <a href="logout.php">( LogOut )</a></div>
+			<div class="loginAs">Job Office <a href="../logout.php">( LogOut )</a></div>
 		</div>
 		<div class="header2"></div>
 	</div>
