@@ -29,13 +29,13 @@
              				$day=$mydate["mday"];
              				$date=$y."-".$mn."-".$day;
 
-             				$gt=mysqli_query($conn,"SELECT gtpass_no FROM account");
-             				$gtp=mysqli_fetch_assoc($gt);
-             				$max=max($gtp);
-             				$gtno=$max+1;
-                           	$in=mysqli_query($conn,"SELECT invoice_no FROM account");
+             				$gt=mysqli_query($conn,"SELECT MAX(gtpass_no) As maxx FROM account");
+             				$gtp=mysqli_fetch_array($gt);
+             				$mx=$gtp["maxx"];
+             				$gtno=$mx+1;
+                           	$in=mysqli_query($conn,"SELECT MAx(invoice_no) As ino FROM account");
              				$inv=mysqli_fetch_assoc($in);
-             				$maxin=max($inv);
+             				$maxin=$inv["ino"];
              				$invno=$maxin+1;
                             $m=mysqli_query($conn,"SELECT man_hrs FROM job WHERE job_no='$no'  ");
                             $ma = mysqli_fetch_assoc($m);
@@ -68,11 +68,7 @@
 
 							$sql5 = mysqli_query($conn,"SELECT * FROM customer WHERE v_no = '$vNo'");
 							$row5 = mysqli_fetch_array($sql5, MYSQL_ASSOC);
-							function insert(){
-								$up="UPDATE account SET amount='$amo' , VAT='$v' ,extra='$e' ,total='$total' ,invoice_no='$invno' ,pay_date='$date', gtpass_no='$gtno' ,payORnot='$true' WHERE job_no='$no'";
-								$sql1 = "INSERT INTO account (amount,VAT,extra,total,invoice_no,pay_date,gtpass_no,payORnot) VALUES ('$amo','$v','$e','$total','$invno','$date','$gtno','$true')";
-								$qry1 = mysqli_query($conn,$up);
-							}
+							
 							
 
 
@@ -96,6 +92,24 @@
 	</script>
  
 </head>
+<style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+.button4 {border-radius: 12px;}
+
+</style>
 
 <body class="body">
 	<?php include 'ACCHeader.php'; ?>
@@ -171,7 +185,7 @@
 			<div class="butArea">
 				<?php 
 				
-				echo "<a href='gatepass.php?id=$jobNo' onclick='insert()'><button >PRINT</button></a>";
+				echo "<a href='gatepass.php?id=$jobNo'><button class='button button4'>SUBMIT</button></a>";
 				?>
 			</div>
 		</div>
