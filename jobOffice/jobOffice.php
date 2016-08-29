@@ -5,10 +5,10 @@
 		include '../config.php';
 		$sql1 = "SELECT job_typ, COUNT(*) AS 'total' FROM jobservce GROUP BY job_typ";
 		$result1 = mysqli_query($conn,$sql1);
-		$PJ = $VM = $BJ = $M = $TRG = $PRG = $PR = $STC = $VTI = $DP = 10;
+		$PJ = $VM = $BJ = $M = $TRG = $PRG = $PR = $STC = $VTI = $DP = 0;
 		$total = 100;
 		while($row = mysqli_fetch_assoc($result1)){
-			if(($row['job_typ'])=="PJ"){
+			if(($row['job_typ'])=="pj"){
 				$PJ = $row['total']; $total = $total + $PJ;
 			}
 			if(($row['job_typ'])=="VM"){

@@ -7,10 +7,10 @@
 <html>
 <head>
 	<title>CGTTI JobInfo</title> 
-	<link rel="stylesheet" type="text/css" href="CSS/jobOffice.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/jobOffice.css">
 	<!--<link rel="stylesheet" type="text/css" href="CSS/index.css">-->
-	<link rel="stylesheet" type="text/css" href="CSS/regForm.css">
-	<link rel="stylesheet" type="text/css" href="CSS/message.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/regForm.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/message.css">
 	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=no">
 	<script>
 		
