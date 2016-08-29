@@ -14,9 +14,9 @@
 <head>
 
 	<title>CGTTI JobInfo</title> 
-	<link rel="stylesheet" type="text/css" href="CSS/jobOffice.css">
-	<link rel="stylesheet" type="text/css" href="CSS/index.css">
-	<link rel="stylesheet" type="text/css" href="CSS/view.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/jobOffice.css">
+	<!--<link rel="stylesheet" type="text/css" href="CSS/index.css">-->
+	<link rel="stylesheet" type="text/css" href="../CSS/view.css">
 	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=no">
 </head>
 
@@ -24,7 +24,7 @@
 	<?php include 'JOHeader.php'; ?>
 	<div class="pageArea" style="font-family: 'calibri','verdana'; padding-right:2%; padding-left:1.5%;">
 		<form action="JOview2.php" method="GET">
-		<div class="b"><button id="b" type="submit">GO</button></div>
+		<div class="search-button"><button id="b" type="submit">GO</button></div>
 		<div class="search" style="width:27%;">
 		
 			<div class="searchName">Search By Job No</div>
@@ -36,7 +36,7 @@
 			<div class="profInfo">
 				<?php
 					if($input!=""){
-						include 'config.php';
+						include '../config.php';
 						
 						$sql = "SELECT * FROM vehicle WHERE v_no LIKE '%$input%'";	
 						

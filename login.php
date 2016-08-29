@@ -29,7 +29,7 @@
 					$section=$userData['section'];
 	  				$_SESSION['section']=$section;
 					if($section=="JO"){
-						header('Location: jobOffice.php');
+						header('Location: jobOffice/jobOffice.php');
 					}
 				}
 			}
