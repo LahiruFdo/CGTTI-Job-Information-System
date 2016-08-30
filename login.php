@@ -35,6 +35,7 @@
 						header('Location: Account.php');
 					}
                     else{
+                        /*have to improve code*/
                         header('Location: Section/Msection.php');
                     }
 				}
