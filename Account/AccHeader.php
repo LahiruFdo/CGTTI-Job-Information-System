@@ -9,7 +9,7 @@
 	</div>
 
 	<div class="sidebar" style="padding-top:2%; margin-top:6%;">
-		<div class="profileImage"><img src="images/user.png" /></div><br>
+		<div class="profileImage"><img src="../images/user.png" /></div><br>
 		<ul id="nav">
 			<li><a  style="font-size: 1.3em;border-top: 0.05em solid #403D3E;" href="account.php">My Home</a></li>
 			<li><a  href="newpayment.php">New Payment</a></li>	

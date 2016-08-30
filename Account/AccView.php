@@ -29,13 +29,13 @@
              				$day=$mydate["mday"];
              				$date=$y."-".$mn."-".$day;
 
-             				$gt=mysqli_query($conn,"SELECT gtpass_no FROM account");
+             				$gt=mysqli_query($conn,"SELECT MAX(gtpass_no)AS gtmax FROM account");
              				$gtp=mysqli_fetch_assoc($gt);
-             				$max=max($gtp);
+             				$max=$gtp['gtmax'];
              				$gtno=$max+1;
-                           	$in=mysqli_query($conn,"SELECT invoice_no FROM account");
+                           	$in=mysqli_query($conn,"SELECT MAX(invoice_no) AS inmax FROM account");
              				$inv=mysqli_fetch_assoc($in);
-             				$maxin=max($inv);
+             				$maxin=$inv['inmax'];
              				$invno=$maxin+1;
                             $m=mysqli_query($conn,"SELECT man_hrs FROM job WHERE job_no='$no'  ");
                             $ma = mysqli_fetch_assoc($m);
@@ -87,9 +87,9 @@
 <head>
 
 	<title>CGTTI JobInfo</title> 
-	<link rel="stylesheet" type="text/css" href="CSS/jobOffice.css">
-	<link rel="stylesheet" type="text/css" href="CSS/index.css">
-	<link rel="stylesheet" type="text/css" href="CSS/viewJob.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/jobOffice.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/index.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/viewJob.css">
 	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=no">
 	<script>
 		
@@ -105,27 +105,35 @@
 			
 		</div>
 		<div class="jDetails">
-			<div class="topBar">payment Details</div>
+			<div class="topBar">job Details</div>
 			<div class="info">
 				<div class="topics">
 					<ul>
+						<li>Total man.h :</li><br><br>
+						<li>Total mach.h :</li><br><br>
 						<li>Amount :</li><br><br>
 						<li>VAT :</li><br><br>
 						<li>Extra :</li><br><br>
-						<li>Total :</li><br><br>
-						<li>Type :</li><br><br>
+						<li><h3>Total :</h3></li><br><br>
+						
 					</ul>
 				</div>
 				<div class="ans">
-					<?php echo "<ul><li>".$amo."</li><br><br>
+					<?php echo "<ul><li>".$man."</li><br><br>
+									<li>".$ba."</li><br><br>
+									<li>".$amo."</li><br><br>
 									<li>".$v."</li><br><br>
 									<li>".$e."</li><br><br>
-									<li>".$total."</li><br><br>
-									<li>".$j."</li><br><br>
+									<li><h3>".$total."</h3></li><br><br>
+									
 					</ul>";?>
 				</div>
 			</div>
 			
+			
+		</div>
+		<div class="cDetails">
+			<div class="topBar">Other Details</div>
 			<div class="info">
 				<div class="topics">
 					<ul>
@@ -142,9 +150,6 @@
 					?>
 				</div>
 			</div>
-		</div>
-		<div class="cDetails">
-			<div class="topBar">Other Details</div>
 			<div class="info">
 				<div class="topics">
 					<ul>
@@ -169,9 +174,27 @@
 		</div>
 		<div class="links">
 			<div class="butArea">
+<style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+.button4 {border-radius: 12px;}
+
+</style>
 				<?php 
 				
-				echo "<a href='gatepass.php?id=$jobNo' onclick='insert()'><button >PRINT</button></a>";
+				echo "<a href='invoice.php?id=$jobNo' ><button class='button button4'>SUBMIT</button></a>";
 				?>
 			</div>
 		</div>

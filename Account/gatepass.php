@@ -29,108 +29,17 @@
 					$gt=$to["gtpass_no"];
 					
 ?>
+
 <head>
 	<title>CASH RECEIPT</title>
-	<link rel="stylesheet" type="text/css" href="CSS/gtpass.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/gtpass.css">
 	
 </head>
-<div id="page-wrap">
-			<p id="header">CASH RECEIPT</p>
-
-			<div id="identity">
-		
-		            <p id="address">CEYLON GERMAN TECHNICAL TRAINING INSTITUTE<br>
-No. 582,Galle Road,<br>
-Mt.Lavinia<br>
-Phone: 011-1254325</p>
-
-
-
-			</div>
-			 <div id="logo">
-			 	<img id="image" src="images/logo.png" alt="logo" />
-			 </div>
-
-
-
-			 		<div style="clear:both"></div>
-		
-					<div id="customer">
-
-            				<p id="customer-title">Vehicle Repair <?php echo "$no";?></p>
-					</div>
-
-
-				<table id="meta">
-	                <tr>
-	                    <td class="meta-head">Invoice No</td>
-	                    <td><p><?php echo "$invNo";?></p></td>
-	                </tr>
-	                <tr>
-	                    <td class="meta-head">Customer name</td>
-	                    <td><p><?php echo "$name";?></p></td>
-	                </tr>
-	                <tr>
-
-	                    <td class="meta-head">Date</td>
-	                    <td><p id="date"><?php echo "$date";?></p></td>
-	                </tr>
-	                <tr>
-	                    <td class="meta-head">Amount Due</td>
-	                    <td><div class="due"><?php echo "$tot";?></div></td>
-	                </tr>
-
-            	</table>
-
-
-            		<br>
-
-            	<table id="items">
-		
-		  <tr>
-		      <th>Item</th>
-		      
-		      
-		  </tr>
-		  
-		  <tr class="item-row">
-		      <td class="item-name">Amount</td>
-		      
-		      <td ><?php echo "$amo";?></td>
-		  </tr>
-
-		   <tr class="item-row">
-		      <td class="item-name">Vat</td>
-		      
-		      <td ><?php echo "$vat";?></td>
-		  </tr>
-		   <tr class="item-row">
-		      <td class="item-name">extra</td>
-		      
-		      <td ><?php echo "$ex";?></td>
-		  </tr>
-		  
-
-		  <tr class="item-row">
-		  <td><hr></td>
-		  <td><hr></td>
-		  </tr>
-		  
-		  <tr>
-		  	<tr class="item-row">
-		      <td class="item-name">Total</td>
-		      
-		      <td ><h4><?php echo "$tot";?></h4></td>
-
-		  </tr>
-		  
-		
-		</table>
-<!--Cash receipt-->
-			<br>
-
-			
-</div>
+<script src="print.js"></script>
+<a href='account.php' ><img src="../images/home.jpg" align="right" width="70" higth="70" ></></a>
+<img src="../images/print.jpg" align="right" width="70" higth="70" onclick="printDiv('printableArea')"></> 
+ 
+<div id="printableArea">
 
 
 
@@ -149,14 +58,13 @@ Phone: 011-1254325</p>
 
 			</div>
 			 <div id="logo">
-			 	<img id="image" src="images/logo.png" alt="logo" />
+			 	<img id="image" src="../images/logo.png" alt="logo" />
 			 </div>
 
 
 
 			 		<div style="clear:both"></div>
-		
-					<div id="customer">
+			 		<div id="customer">
 
             				<p id="customer-title">Vehicle Repair <?php echo "$no";?></p>
 					</div>
@@ -226,5 +134,6 @@ Phone: 011-1254325</p>
 				</p>
 
 			
+</div>
 </div>
 </html>
