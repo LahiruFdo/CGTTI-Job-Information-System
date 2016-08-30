@@ -1,0 +1,10 @@
+.page-area1{
+	position: relative;
+	padding: 1%;
+	/*border: 0.05em solid #DCC1CE;*/
+	border-radius: 2em;
+	width: 100%;
+	height: auto;
+	float: left;
+}
+

@@ -31,6 +31,12 @@
 					if($section=="JO"){
 						header('Location: jobOffice/jobOffice.php');
 					}
+                    else if($section=="ACC"){
+						header('Location: Account.php');
+					}
+                    else{
+                        header('Location: Section/Msection.php');
+                    }
 				}
 			}
 			else{
