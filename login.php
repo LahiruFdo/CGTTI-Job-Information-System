@@ -38,6 +38,7 @@
                     else{
                         /*have to improve code for logging different user*/
                         header('Location: Section/Msection.php');
+                        //logging to different users
                     }
 				}
 			}
