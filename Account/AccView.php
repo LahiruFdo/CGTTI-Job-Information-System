@@ -1,20 +1,8 @@
 <?php
-	include 'config.php';
+	include '../config.php';
 
-	function get_jt($j){
-		$type = "Private Job";
-		switch($j){
-			case "BC": $type = "Bus Company"; break;
-			case "VM": $type = "Vehicle Maintain"; break;
-		}
-		return $type;
-	}
-
-	if (!isset($_GET['id'])){
-    	echo 'No ID was given...';
-    	exit;
-	}
-	else{
+	
+	
 		$jobNo = $_GET['id'];
 
 		
@@ -77,7 +65,7 @@
 
 
 
-	}
+	
 
 ?>
 

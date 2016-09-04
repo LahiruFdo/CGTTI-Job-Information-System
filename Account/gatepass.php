@@ -3,7 +3,7 @@
 <html>
 
 <?php 
-				include 'config.php';
+				include '../config.php';
 				$no=$_GET['id'];
 				$invo=mysqli_query($conn,"SELECT invoice_no FROM account WHERE job_no='$no'");
 				$invoi=mysqli_fetch_assoc($invo);
@@ -33,19 +33,27 @@
 <head>
 	<title>CASH RECEIPT</title>
 	<link rel="stylesheet" type="text/css" href="../CSS/gtpass.css">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	<!--<link rel="stylesheet" type="text/css" href="CSS/index.css">-->
+	<link rel="stylesheet" type="text/css" href="../CSS/jobOffice.css">
+	<!--<link rel="stylesheet" type="text/css" href="CSS/viewJob.css">-->
+	<link rel="stylesheet" type="text/css" href="../CSS/button.css">
 	
 </head>
 <script src="print.js"></script>
-<a href='account.php' ><img src="../images/home.jpg" align="right" width="70" higth="70" ></></a>
-<img src="../images/print.jpg" align="right" width="70" higth="70" onclick="printDiv('printableArea')"></> 
  
+ <body class="body">
+	<?php include 'AccHeader.php'; ?>
+	<div class="pageArea">
+		<a href='account.php' ><img src="../images/home.jpg" align="right" width="70" higth="70" ></></a>
+<img src="../images/print.jpg" align="right" width="70" higth="70" onclick="printDiv('printableArea')"></>
 <div id="printableArea">
 
 
 
 
 <div id="page-wrap">
-			<p id="header">GATE PASS</p>
+			<p id="headerr">GATE PASS</p>
 
 			<div id="identity">
 		
@@ -136,4 +144,6 @@ Phone: 011-1254325</p>
 			
 </div>
 </div>
+</div>
+</body>
 </html>
