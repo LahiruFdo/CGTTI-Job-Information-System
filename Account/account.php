@@ -109,7 +109,7 @@
 			</div>
 			<div class="profInfo">
 				<?php
-					include 'config.php';
+					
                     $sql1 = "SELECT job_no FROM account WHERE payORnot !='F' ORDER BY gtpass_no DESC LIMIT 10";
 					
                     if ($result = $con->getConnection($sql1)) {
