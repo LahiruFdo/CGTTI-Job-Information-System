@@ -37,7 +37,7 @@
 					$num1 = $num;
 					$num2 = $num1+10;
 					include '../config.php';
-					$sql = "SELECT * FROM jobservce ORDER BY id DESC LIMIT $num1,$num2 ";	
+					$sql = "SELECT * FROM jobservce ORDER BY id DESC LIMIT $num1,10 ";	
 					
 					if ($result = mysqli_query($conn,$sql)) {
 						$count = mysqli_num_rows($result);

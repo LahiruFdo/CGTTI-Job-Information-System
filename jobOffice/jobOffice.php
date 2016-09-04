@@ -3,40 +3,45 @@
 
 	if(isset($_SESSION["section"])=="JO"){  
 		include '../config.php';
-		$sql1 = "SELECT job_typ, COUNT(*) AS 'total' FROM jobservce GROUP BY job_typ";
-		$result1 = mysqli_query($conn,$sql1);
+
+		$beginTest = "SELECT job_typ, COUNT(*) AS 'total' FROM jobservce GROUP BY job_typ";
+
+		$inp = new DatabaseCon($conn);
+		$inpResult = $inp->getConnection($beginTest);
+
 		$PJ = $VM = $BJ = $M = $TRG = $PRG = $PR = $STC = $VTI = $DP = 0;
-		$total = 100;
-		while($row = mysqli_fetch_assoc($result1)){
-			if(($row['job_typ'])=="pj"){
-				$PJ = $row['total']; $total = $total + $PJ;
+		$total = 0;
+
+		while($resultRow= $inp->getoutput($inpResult)){
+			if(($resultRow['job_typ'])=="pj"){
+				$PJ = $resultRow['total']; $total = $total + $PJ;
 			}
-			if(($row['job_typ'])=="VM"){
-				$VM = $row['total']; $total = $total + $VM;
+			if(($resultRow['job_typ'])=="VM"){
+				$VM = $resultRow['total']; $total = $total + $VM;
 			}
-			if(($row['job_typ'])=="BJ"){
-				$BJ = $row['total']; $total = $total + $BJ;
+			if(($resultRow['job_typ'])=="BJ"){
+				$BJ = $resultRow['total']; $total = $total + $BJ;
 			}
-			if(($row['job_typ'])=="M"){
-				$M = $row['total']; $total = $total + $M;
+			if(($resultRow['job_typ'])=="M"){
+				$M = $resultRow['total']; $total = $total + $M;
 			}
-			if(($row['job_typ'])=="TRG"){
-				$TRG = $row['total']; $total = $total + $TRG;
+			if(($resultRow['job_typ'])=="TRG"){
+				$TRG = $resultRow['total']; $total = $total + $TRG;
 			}
-			if(($row['job_typ'])=="PRG"){
-				$PRG = $row['total']; $total = $total + $PRG;
+			if(($resultRow['job_typ'])=="PRG"){
+				$PRG = $resultRow['total']; $total = $total + $PRG;
 			}
-			if(($row['job_typ'])=="PR"){
-				$PR = $row['total']; $total = $total + $PR;
+			if(($resultRow['job_typ'])=="PR"){
+				$PR = $resultRow['total']; $total = $total + $PR;
 			}
-			if(($row['job_typ'])=="STC"){
-				$STC = $row['total']; $total = $total + $STC ;
+			if(($resultRow['job_typ'])=="STC"){
+				$STC = $resultRow['total']; $total = $total + $STC ;
 			}
-			if(($row['job_typ'])=="VTI"){
-				$VTI = $row['total']; $total = $total + $VTI;
+			if(($resultRow['job_typ'])=="VTI"){
+				$VTI = $resultRow['total']; $total = $total + $VTI;
 			}
-			if(($row['job_typ'])=="DP"){
-				$DP = $row['total']; $total = $total + $DP;
+			if(($resultRow['job_typ'])=="DP"){
+				$DP = $resultRow['total']; $total = $total + $DP;
 			}
 		}
 	
@@ -45,16 +50,20 @@
 			return $percentage;
 		}
 
-		$sql2 = "SELECT COUNT(*) AS 'inboxCount' FROM messages WHERE (t='JO' AND readBy='F')";
-		$result2 = mysqli_query($conn,$sql2);
-		$row = mysqli_fetch_assoc($result2);
-		$inboxCount = $row['inboxCount'];
+		
+
+		$msgCountQ = "SELECT COUNT(*) AS 'inboxCount' FROM messages WHERE (t='JO' AND readBy='F')";
+		$msgCount = new DatabaseCon($conn);
+		$msgRst = $msgCount->getConnection($msgCountQ);
+		$msgRstRow= $msgCount->getoutput($msgRst);
+		$inboxCount = $msgRstRow['inboxCount'];
 
 	}
 	else{
 	 header("Location:index.php");
 	}
 ?>
+
 <!DOCTYPE html>
 
 <html>
@@ -66,6 +75,7 @@
 	<link rel="stylesheet" type="text/css" href="../CSS/jobOffice.css">
 	<!--<link rel="stylesheet" type="text/css" href="CSS/viewJob.css">-->
 	<link rel="stylesheet" type="text/css" href="../CSS/button.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/details.css">
 	<meta name="viewport" content="width=device-width, initial-scale: 1.0, user-scaleable=no">
 	
  
@@ -74,9 +84,10 @@
 <body class="body">
 
 	<?php include 'JOHeader.php'; ?>
+
 	<div class="pageArea">
 		<div class="contentArea">
-			<a href="#">
+			<a href="message.php">
 			<div class="message-button">
 				<div class="inner-left-corner"><img src="../images/message.png" style="width:100px; height:80px;"></div>
 				<div class="button-text-1">Messages<?php if($inboxCount>0){echo "<div class='inbox-number'>".$inboxCount."</div>";}?></div>
@@ -89,13 +100,13 @@
 			</div>
 			</a>
 			<div class="detail-button-area">
-				<a href="#" id="b2">
+				<a href="#popup1">
 				<div class="contact-button">
 					<div class="inner-mid-corner"><img src="../images/details.png" style="width:30px; height:25px;"></div>
 					<div class="button-text-2">Job Details</div>
 				</div>
 				</a>
-				<a href="#" id="b3">
+				<a href="#" id="b2">
 				<div class="details-button">
 					<div class="inner-mid-corner"><img src="../images/contact.png" style="width:30px; height:25px;"></div>
 					<div class="button-text-2">Contacts</div>
@@ -179,29 +190,31 @@
 			</div>
 			<div class="profInfo">
 				<?php
-					include '../config.php';
 
-					$sql = "SELECT job_no,job_typ,sec_code,rDate,closedDate FROM jobservce WHERE gatepass='F' ORDER BY rDate DESC";	
-					
-					if ($result = mysqli_query($conn,$sql)) {
-						$count = mysqli_num_rows($result);
-						
-						if($count >0){
-					    	echo "<table><tr><th> Job No </th><th> Section </th><th> Job Type </th><th> Registered Date </th><th> Status </th>";
-					    	while($row = mysqli_fetch_assoc($result)) {
-					    		$a=$row["job_no"];
-					    		$scode = $row["sec_code"];
-					        	$section = mysqli_query($conn,"SELECT name FROM section WHERE code='$scode'");
-					        	$sec = mysqli_fetch_assoc($section);
-					        	$Status = $row["closedDate"];
-					        	if($Status==""){
-					        		$state = "Unfinished";
+					$sql = "SELECT job_no,job_typ,sec_code,rDate,closedDate,name FROM jobservce, section WHERE ( jobservce.sec_code = section.code AND gatepass='F') ORDER BY rDate DESC";	
+
+					$con = new DatabaseCon($conn);
+
+					if($result = $con->getConnection($sql)){
+						$count = $con->getRowCount($result);
+						if ($count >0){
+							echo "<table><tr><th> Job No </th><th> Section </th><th> Job Type </th><th> Registered Date </th><th> Status </th>";
+							while($row= $con->getoutput($result)){
+								$a = $row["job_no"]; $b = $row["name"]; $c=get_jt($row["job_typ"]); $d = $row["rDate"]; $e = $row["closedDate"];
+								if($e==""){
+					        		$e = "Unfinished";
 					        	}
-						        else{$state = "Finished";}
-						        echo "<tr><td><a href='JOviewjob.php?id=$a'>" . $row["job_no"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $sec["name"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["job_typ"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["rDate"] . "</a></td><td><a href='JOviewjob.php?id=$a'>" . $state."</a></td></tr>";
-					     	}
-					     	echo "</table>";}
-					 	else {
+						        else{$e = "Finished";}
+						        echo 	"<tr><td><a href='JOviewjob.php?id=$a'>" . $a. 
+						        		"</a></td><td><a href='JOviewjob.php?id=$a'>" . $b. 
+						        		"</a></td><td><a href='JOviewjob.php?id=$a'>" . $c. 
+						        		"</a></td><td><a href='JOviewjob.php?id=$a'>" . $d . 
+						        		"</a></td><td><a href='JOviewjob.php?id=$a'>" . $e.
+						        		"</a></td></tr>";
+							}
+							echo "</table>";
+						}
+						else {
 					     	echo "No ongoing Jobs at the moment";
 					    }
 					}
@@ -215,31 +228,33 @@
 			</div>
 			<div class="profInfo">
 				<?php
-					include '../config.php';
-					$sql = "SELECT job_no,job_typ,sec_code,rDate,closedDate,gatepass FROM jobservce ORDER BY id DESC LIMIT 5";	
-					
-					if ($result = mysqli_query($conn,$sql)) {
-						$count = mysqli_num_rows($result);
-						if($count >0){
-					    	echo "<table><tr><th> Job No </th><th> Section </th><th> Job Type </th><th> Registered Date </th><th> Status </th>";
-					     	// output data of each row
-					    	while($row = mysqli_fetch_assoc($result)) {
-						    	$a=$row["job_no"];
-						    	$scode = $row["sec_code"];
-						        $section = $conn->query("SELECT name FROM section WHERE code='$scode'");
-						        $sec = $section->fetch_assoc();
-						        $Status = $row["closedDate"];
-						        if($Status==""){
-						        	$state = "Unfinished";
-						        }
-						        else{$state = "Finished";}
-						        $Status = $row["gatepass"];
-						        if($Status=='T'){$state = "Closed";}
-						        echo "<tr><td><a href='JOviewjob.php?id=$a'>" . $row["job_no"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $sec["name"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["job_typ"]. "</a></td><td><a href='JOviewjob.php?id=$a'>" . $row["rDate"] . "</a></td><td><a href='JOviewjob.php?id=$a'>" . $state."</a></td></tr>";
-						   	}
-					     	echo "</table>";}
-					 	else {
-					     	echo "No ongoing Jobs at the moment";
+
+					$sql1 = "SELECT job_no,job_typ,sec_code,rDate,closedDate,gatepass,name FROM jobservce, section WHERE ( jobservce.sec_code = section.code ) ORDER BY rDate DESC LIMIT 5";	
+
+					$con1 = new DatabaseCon($conn);
+
+					if($result1 = $con1->getConnection($sql1)){
+						$count1 = $con1->getRowCount($result1);
+						if ($count1 >0){
+							echo "<table><tr><th> Job No </th><th> Section </th><th> Job Type </th><th> Registered Date </th><th> Status </th>";
+							while($row= $con1->getoutput($result1)){
+								$a = $row["job_no"]; $b = $row["name"]; $c=get_jt($row["job_typ"]); $d = $row["rDate"]; $e = $row["closedDate"]; $f = $row["gatepass"];
+								if($e==""){
+					        		$e = "Unfinished";
+					        	}
+						        else{$e = "Finished";}
+						        if($f == 'T'){$e = "Closed";}
+						        echo 	"<tr><td><a href='JOviewjob.php?id=$a'>" . $a. 
+						        		"</a></td><td><a href='JOviewjob.php?id=$a'>" . $b. 
+						        		"</a></td><td><a href='JOviewjob.php?id=$a'>" . $c. 
+						        		"</a></td><td><a href='JOviewjob.php?id=$a'>" . $d . 
+						        		"</a></td><td><a href='JOviewjob.php?id=$a'>" . $e.
+						        		"</a></td></tr>";
+							}
+							echo "</table>";
+						}
+						else {
+					     	echo "No jobs are registered yet !!!";
 					    }
 					}
 				?>
@@ -256,7 +271,7 @@
 			<div class="msgBody">
 				<span id="c1" class="close">x</span>
 				<br>
-				<form action="" method="post">
+				<form action='../comment.php' method="post">
 				<div class="info">
 					<div class="topics" style="width:14%; padding-top:1%;">
 						<ul>
@@ -265,36 +280,36 @@
 					</div>
 					<div class="ans" style="padding-left:3%; width:80%;">
 						<ul>
-							<input type="hidden" name="to" value="admin">
 							<input type="hidden" name="from" value="<?php echo "JO";?>">
-							<input type="hidden" name="type" value="comment">
-							<textarea style="cursor:auto;" name="msg" cols="50" rows="5" placeholder="Type your comment here"></textarea>
+							<textarea style="cursor:auto; resize:none; border-color: rgb(247,170,32);" name="msg" cols="50" rows="5" placeholder="Type your comment here" input required='required' ></textarea>
 						</ul><br>
 					</div>
 				</div>
-				<button id="submit" type="submit" name="submit" value="Register">Send</button>
+				<button style="background-color:rgb(247,170,32);" id="submit" type="submit" name="submit" value="Register">Send</button>
 				</form>
-				<?php
-					if(isset($_POST['submit'])){include 'sendMsg.php';}
-				?>
 			</div>
 		</div>
 	<!--Comments box-->
 
 	<!--details box-->
-		<div id="details" class="msgWindow">
-			<div class="msgBody">
-				<span id="c2" class="close">x</span>
-				<?php include 'details.php';?>
+		<div id="popup1" class="overlay">
+			<div class="popup">
+				<a class="close" href="#">&times;</a>
+				<br><br>
+				<div class="content">
+					Thank to pop me out of that button, but now i'm done so you can close this window.
+				</div>
 			</div>
-		</div>
+		</div>	
 	<!--details box-->
 
 	<!--details box-->
 		<div id="contacts" class="msgWindow">
 			<div class="msgBody">
-				<span id="c3" class="close">x</span>
-				Contacts
+				<span id="c2" class="close"><h3>x</h3></span>
+				<div class="contact-details">
+				<h2>Contacts</h2>
+				</div>
 				<?php //include 'details.php';//?>
 			</div>
 		</div>
@@ -303,39 +318,31 @@
 	<!--Script to visible window boxes-->
 		<script>
 			var msgBox = document.getElementById('comments');
-			var detailBox = document.getElementById('details');
+			//var detailBox = document.getElementById('details');
 			var contactsBox = document.getElementById('contacts');
 			var btn1 = document.getElementById("b1");
 			var btn2 = document.getElementById("submit");
 			var btn3 = document.getElementById("b2");
-			var btn4 = document.getElementById("b3");
 			var close1 = document.getElementById("c1");
 			var close2 = document.getElementById("c2");
-			var close3 = document.getElementById("c3");
 			/*var span = document.getElementsByClassName("close")[0];*/
 
 			btn1.onclick = function() {
 				msgBox.style.display = "block";
 			}
+			close1.onclick = function() {
+				msgBox.style.display = "none";
+			}
 			btn2.onclick = function() {
 				msgBox.style.display = "none";
 			}
 			btn3.onclick = function() {
-				detailBox.style.display = "block";
-			}
-			btn4.onclick = function() {
 				contactsBox.style.display = "block";
 			}
-
-			close1.onclick = function() {
-				msgBox.style.display = "none";
-			}
 			close2.onclick = function() {
-				detailBox.style.display = "none";
-			}
-			close3.onclick = function() {
 				contactsBox.style.display = "none";
 			}
+			
 
 			// When the user clicks on <span> (x), close the modal
 			/*span.onclick = function() {

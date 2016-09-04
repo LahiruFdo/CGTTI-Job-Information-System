@@ -1,7 +1,7 @@
 <?php
 	include '../config.php';
 
-	function get_jt($j){
+	/*function get_jt($j){
 		$type = "Private Job";
 		switch($j){
 			case "BJ": $type = "Bus Jobs"; break;
@@ -15,7 +15,7 @@
 			case "DP": $type = "Director Bunglow"; break;
 		}
 		return $type;
-	}
+	}*/
 
 	if (!isset($_GET['id'])){
     	echo 'No ID was given...';
@@ -58,7 +58,7 @@
 		$row5 = mysqli_fetch_array($sql5, MYSQL_ASSOC);
 
 		$sql6 = mysqli_query($conn,"SELECT gtpass_no FROM account WHERE job_no = '$jobNo'");
-		$row6 = mysqli_fetch_array($sql5, MYSQL_ASSOC);
+		$row6 = mysqli_fetch_array($sql6, MYSQL_ASSOC);
 	}
 
 ?>
@@ -186,8 +186,8 @@
 			</dl>
 		</div>
 		<div id = "g1" class="button-action1"><p>Send Message to</p><p>the Job Section</p></div>
-		<div id = "b1" class="round-button1">fafaf</div>
-		<div id = "b2" class="round-button2">fafaf</div>
+		<a href="#" style="text-decoration: none; color:black"><div id = "b1" class="round-button1">fafaf</div></a>
+		<a href="JobDetails(PDF).php?id=<?php echo $jobNo; ?>" target="_blank" style="text-decoration: none; color:black"><div id = "b2" class="round-button2">fafaf</div></a>
 		<div id = "g2" class="button-action1" style="margin-top:18%"><p>Download Details</p></div><br>
 		<script type="text/javascript">
 			var event1 = document.getElementById('b1');
@@ -212,7 +212,7 @@
 		<div class="msgBody">
 			<span class="close">x</span>
 			<br>
-			<form action="" method="post">
+			<form action="../sendMessage.php" method="post">
 			<div class="info">
 				<div class="topics" style="width:14%; padding-top:1%;">
 					<ul>
@@ -225,16 +225,14 @@
 						<li><div class="toMsg"><?php echo $sec." Section";?></div></li><br><br><br>
 						<input type="hidden" name="to" value="<?php echo $code;?>">
 						<input type="hidden" name="from" value="<?php echo "JO";?>">
+						<input type="hidden" name="jn" value="<?php echo $jobNo;?>">
 						<input type="hidden" name="type" value="normal">
-						<textarea style="cursor:auto;" name="msg" cols="50" rows="5" placeholder="Type your message here"></textarea>
+						<textarea style="cursor:auto; resize:none;" name="msg" cols="50" rows="5" placeholder="Type your message here"></textarea>
 					</ul><br>
 				</div>
 			</div>
 			<button id="submit" type="submit" name="submit" value="Register">Send</button>
 			</form>
-			<?php
-				//if(isset($_POST['submit'])){include 'sendMsg.php';}
-			?>
 		</div>
 	</div>
 	<!--Job message box-->

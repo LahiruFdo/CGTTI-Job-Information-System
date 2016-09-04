@@ -140,6 +140,8 @@
 	width:100%;
 	margin-left: 0%;
 	font-family: 'calibri';
+	max-height: 20%;
+	resize: none;
 }
 
 .next-button{
@@ -211,7 +213,7 @@
 .numBox1{
 	position: relative;
 	float: left;
-	margin-top: 10%;
+	margin-top: 5%;
 	width: 15%;
 	height: 8%;
 	background-color: #fff;
@@ -226,7 +228,7 @@
 .slash{
 	position: relative;
 	float: left;
-	margin-top: 10%;
+	margin-top: 5%;
 	width: 6%;
 	height: 8%;
 	font-size: 1.5em;
@@ -312,5 +314,93 @@
 	padding-bottom: 1%;
 }
 
+.error{
+	padding-left: 20%;
+	color: red;
+	font-size: 0.8em;
+	margin-left: 17%;
+	padding-top: 5%;
+	padding-bottom: 0%;
+}
+
+.form-area table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: 'Arial';
+	border:  0.05em solid #2c3e50;
+	/*box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+	     0px 10px 20px rgba(0,0,0,0.05),
+	     0px 20px 20px rgba(0,0,0,0.05),
+	     0px 30px 20px rgba(0,0,0,0.05);*/
+}
+
+.form-area th, td {
+    text-align: center;
+    padding: 3%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border:  0.05em solid #2c3e50;
+    border-collapse: collapse;
+
+}
+
+.form-area tr{
+	background-color: #f2f2f2;
+	padding-left: 3%;
+	padding-right: 3%;
+	font-size: 0.9em;
+}
+
+.form-area a{
+	display: block;
+	cursor: pointer;
+	color : black;
+}
+
+.form-area tr:hover{
+	background-color: rgb(254,217,180);
+	font-weight: bold;
+}
+
+.form-area th {
+    background-color: rgb(254,217,139);
+    color: black;
+    cursor: default;
+    font-family: 'Verdana';
+    font-size: 0.9em;
+}
+
+.red{
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 22px;
+	border-radius: 0.5em;
+	background-color: red;
+	display: block;
+	margin-left: 25%;
+}
+
+.green{
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 22px;
+	border-radius: 0.5em;
+	background-color: green;
+	display: block;
+	margin-left: 25%;
+}
+
+.yellow{
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 22px;
+	border-radius: 0.5em;
+	background-color: yellow;
+	display: block;
+	margin-left: 25%;
+}
 
 

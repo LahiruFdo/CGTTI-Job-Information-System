@@ -25,11 +25,11 @@
 	<div class="pageArea" style="font-family: 'calibri','verdana'; padding-right:2%; padding-left:1.5%;">
 		<form action="JOview2.php" method="GET">
 		<div class="search-button"><button id="b" type="submit">GO</button></div>
-		<div class="search" style="width:27%;">
+		<div class="search" style="width:30%;">
 		
-			<div class="searchName">Search By Job No</div>
-			<div class="searchBar"><input id="search" name="searchItem" type="text" placeholder="Enter Job Number Here"/></div>
-
+			<div class="searchName" style="width:55%;">Search By Vehicle No.</div>
+			<div class="searchBar" style="width:44%;"><input id="search" name="searchItem" type="text" placeholder="Enter Vehicle Number"/></div>
+			
 		</div>
 		</form>
 		<div class="searchResults">
@@ -62,7 +62,7 @@
 							        else{$state = "Finished";}
 							        $s = $jobDetails["gatePass"];
 							        if($s=='T'){$state = "Closed";}
-							        echo "<tr><td>" . $jobNo. "</td><td>" . $row["job_no"]. "</td><td>" . $jobDetails["job_typ"]. "</td><td>" . $jobDetails["rDate"] . "</td><td>".$state."</td><td>".$Status."</td><td>".$gp."</td></tr>";
+							        echo "<tr><td>" . $row["v_no"]. "</td><td>" . $row["job_no"]. "</td><td>" . $jobDetails["job_typ"]. "</td><td>" . $jobDetails["rDate"] . "</td><td>".$state."</td><td>".$Status."</td><td>".$gp."</td></tr>";
 							   	}
 						     	echo "</table>";}
 						 	else {

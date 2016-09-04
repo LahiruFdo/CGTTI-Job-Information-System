@@ -1,0 +1,112 @@
+.overlay {
+  position: absolute;
+  z-index: 123;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.warning{
+  position:absolute; 
+  width: 14.5%; 
+  padding:0.5%; 
+  margin-top:9%; 
+  height: 30%; 
+  margin-left: 84%; 
+  border: 0.3em solid rgb(229,29,32);
+  z-index: 123;
+  background: #fff;
+  border-radius: 0.5em;
+}
+
+.popup {
+  z-index: 123;
+  margin-top: 12%;
+  margin-left: 37.5%; 
+  padding: 1%;
+  padding-top: 0%;
+  background: #fff;
+  border-radius: 0.5em;
+  width: 25%;
+  position: relative;
+  transition: all 5s ease-in-out;
+  height: 45%;
+}
+
+.warning h2{
+  margin-top: 1%;
+  text-align: center;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 1.2em;
+}
+
+.warning h4 {
+  margin-top: 1%;
+  text-align: center;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+}
+
+.popup h2 {
+  margin-top: 1%;
+  text-align: center;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 1.2em;
+}
+
+.popup h4 {
+  margin-top: 1%;
+  text-align: center;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+}
+
+.popup .close {
+  position: absolute;
+  top: 0%;
+  right: 2%;
+  transition: all 200ms;
+  font-size: 1.6em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #4D494B;
+}
+.popup .content {
+  height: 50%;
+}
+
+.button {
+  position: relative;
+  float: left;
+  margin-top: 7%;
+  font-size: 1em;
+  padding: 2%;
+  padding-bottom: 3%;
+  color: #fff;
+  background-color: rgb(251,154,0);
+  border-radius: 0.3em/0.5em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  width: 18%;
+  text-align: center;
+}
+.button:hover {
+  background: #4D494B;
+}

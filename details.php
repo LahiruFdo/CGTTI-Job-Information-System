@@ -1,3 +1,35 @@
+<div class="detail-area-1">
+<br><br>
+	<div class="form-area" style="background-color:#fff; height:auto;width:100%;margin-top:0%;">
+			<div class="topBar" style="background-color:rgb(254,217,139);">Job Categories</div>
+			<div class="code">
+				<p>PJ</p>
+				<p>VM</p>
+				<p>BJ</p>
+				<p>M</p>
+				<p>TRG</p>
+				<p>PRG</p>
+				<p>PR</p>
+				<p>STC</p>
+				<p>VTI</p>
+				<p>DP</p>
+			</div>
+			<div class="mean">
+				<p>- Private Jobs</p>
+				<p>- Vehicle maintain</p>
+				<p>- Bus Jobs</p>
+				<p>- Institute Maintainance</p>
+				<p>- Training (Full Time)</p>
+				<p>- Training (Part Time)</p>
+				<p>- Production</p>
+				<p>- Special Training Course</p>
+				<p>- Borella Institute</p>
+				<p>- Director</p>
+			</div>
+	</div>
+
+
+<!--
 <div class="detailArea">
 	<h3>Abbreviations</h3>
 	<h4>Job Categories</h4>
@@ -93,7 +125,7 @@
 	</div>	
 </div>			
 					
-					
+-->					
 					
 					
 					
