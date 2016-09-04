@@ -28,9 +28,18 @@
 				if($pwData["pw"] == $pw ){
 					$section=$userData['section'];
 	  				$_SESSION['section']=$section;
+                    //if the user is Job Officer.
 					if($section=="JO"){
 						header('Location: jobOffice/jobOffice.php');
 					}
+                    else if($section=="ACC"){
+						header('Location: Account.php');
+					}
+                    else{
+                        /*have to improve code for logging different user*/
+                        header('Location: Section/Msection.php');
+                        //logging to different users
+                    }
 				}
 			}
 			else{
