@@ -45,12 +45,42 @@
 <script src="print.js"></script>
  <body class="body">
 	<?php include 'AccHeader.php'; ?>
+	
 	<div class="pageArea">
+	<style>
+	.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 200px;
+    cursor: pointer;
 
-	<a href='gatepass.php?id=$no' ><img src="../images/next.jpg" align="right" width="76" higth="76" ></> </a>
-	<img src="../images/print.jpg" align="right" width="70" higth="70" onclick="printDiv('printableArea')" ></>
+}.button1 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px -200px;
+    cursor: pointer;
+}
+
+</style>
+	<?php 
+				
+				echo "<a href='gatepass.php?id=$no' ><button class='button button4'  >NEXT</button></a>";
+				?>
+	<button class='button1 ' onclick="printDiv('printableArea')" >PRINT</button>
 <div id="printableArea">
-<div id="page-wrap">
+<div id="page-wrap" style="background-color:#fff;border:0.05em solid black; padding:3%;">
 			<p id="headerr">CASH RECEIPT</p>
 
 			<div id="identity">
@@ -93,7 +123,7 @@ Phone: 011-1254325</p>
 	                </tr>
 	                <tr>
 	                    <td class="meta-head">Amount Due</td>
-	                    <td><div class="due"><?php echo "$tot";?></div></td>
+	                    <td><div class="due">Rs <?php echo "$tot";?>/=</div></td>
 	                </tr>
 
             	</table>
@@ -110,18 +140,18 @@ Phone: 011-1254325</p>
 		  </tr>
 		  
 		  <tr class="item-row">
-		      <td class="item-name">Amount</td>
+		      <td class="item-name">Amount(LKR)</td>
 		      
 		      <td ><?php echo "$amo";?></td>
 		  </tr>
 
 		   <tr class="item-row">
-		      <td class="item-name">Vat</td>
+		      <td class="item-name">Vat(LKR)</td>
 		      
 		      <td ><?php echo "$vat";?></td>
 		  </tr>
 		   <tr class="item-row">
-		      <td class="item-name">extra</td>
+		      <td class="item-name">extra(LKR)</td>
 		      
 		      <td ><?php echo "$ex";?></td>
 		  </tr>
@@ -134,7 +164,7 @@ Phone: 011-1254325</p>
 		  
 		  <tr>
 		  	<tr class="item-row">
-		      <td class="item-name">Total</td>
+		      <td class="item-name">Total(LKR)</td>
 		      
 		      <td ><h4><?php echo "$tot";?></h4></td>
 
@@ -163,7 +193,7 @@ Phone: 011-1254325</p>
 </html>
 
 <?php 
-include '../config.php';
+
 							$jobNo = $_GET['id'];
 
 		

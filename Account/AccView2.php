@@ -10,45 +10,30 @@
                   			$jobtyp=mysqli_query($conn,"SELECT job_typ FROM jobservce WHERE job_no='$no'");
                             $jobtype=mysqli_fetch_assoc($jobtyp);
                             $j=$jobtype["job_typ"];
+             				$day=mysqli_query($conn,"SELECT pay_date FROM account WHERE job_no='$no'");
+							$daya=mysqli_fetch_assoc($day);
+							$date=$daya["pay_date"];
              			
-             				$mydate=getdate(date("U"));
-             				$y=$mydate["year"];
-             				$mn=$mydate["mon"];
-             				$day=$mydate["mday"];
-             				$date=$y."-".$mn."-".$day;
 
-             				$gt=mysqli_query($conn,"SELECT MAX(gtpass_no)AS gtmax FROM account");
-             				$gtp=mysqli_fetch_assoc($gt);
-             				$max=$gtp['gtmax'];
-             				$gtno=$max+1;
-                           	$in=mysqli_query($conn,"SELECT MAX(invoice_no) AS inmax FROM account");
-             				$inv=mysqli_fetch_assoc($in);
-             				$maxin=$inv['inmax'];
-             				$invno=$maxin+1;
+             				
                             $m=mysqli_query($conn,"SELECT man_hrs FROM job WHERE job_no='$no'  ");
                             $ma = mysqli_fetch_assoc($m);
                             $man = $ma["man_hrs"];
-                            $m1=mysqli_query($conn,"SELECT man FROM extra ");
-                            $ma1 = mysqli_fetch_assoc($m1);
-                            $man1= $ma1["man"];
-                            $a=$man*$man1;
+                            
                             $mc=mysqli_query($conn,"SELECT mach_hrs FROM job WHERE job_no='$no'  ");
                             $mch=mysqli_fetch_assoc($mc);
                             $ba=$mch["mach_hrs"];
-                            $mcc=mysqli_query($conn,"SELECT mach FROM extra ");
-                            $mchc=mysqli_fetch_assoc($mcc);
-                            $bb=$mchc["mach"];
-                            $b=$ba*$bb;
+                            
                            
-                            $amo = $a+$b;
-                            $vatt = mysqli_query($conn,"SELECT VAT FROM extra ");
-                            $vat=mysqli_fetch_assoc($vatt);
-                            $extt = mysqli_query($conn,"SELECT extra FROM extra ");
-                            $ext=mysqli_fetch_assoc($extt);
-                            $v=$vat["VAT"];
-                            $e=$ext["extra"];
-                            $total =$amo+$v+$e;
-                            $true="T";
+                            $day=mysqli_query($conn,"SELECT * FROM account WHERE job_no='$no'");
+							$daya=mysqli_fetch_assoc($day);
+							$date=$daya["pay_date"];
+							$tot=$daya["total"];
+							$amo=$daya["amount"];
+							$v=$daya["VAT"];
+							$e=$daya["extra"];
+							$inv=$daya["invoice_no"];
+							$gt=$daya["gtpass_no"];
 
                             $sql4 = mysqli_query($conn,"SELECT * FROM vehicle WHERE job_no = '$no'");
 							$row4 = mysqli_fetch_array($sql4, MYSQL_ASSOC);
@@ -108,7 +93,7 @@
 									<li>".$amo."</li><br><br>
 									<li>".$v."</li><br><br>
 									<li>".$e."</li><br><br>
-									<li><h3>".$total."</h3></li><br><br>
+									<li><h3>".$tot."</h3></li><br><br>
 									
 					</ul>";?>
 				</div>
@@ -128,8 +113,8 @@
 				</div>
 				<div class="ans">
 					<?php echo "<ul><li>".$date."</li><br><br>
-									<li>".$invno."</li><br><br>
-									<li>".$gtno."</li><br><br>
+									<li>".$inv."</li><br><br>
+									<li>".$gt."</li><br><br>
 					</ul>"	;
 					?>
 				</div>
@@ -178,7 +163,8 @@
 </style>
 				<?php 
 				
-				echo "<a href='invoice.php?id=$jobNo' ><button class='button button4'>SUBMIT</button></a>";
+				echo 
+				"<a href='invoice2.php?id=$jobNo' ><button class='button button4'>Print Again</button></a>";
 				?>
 			</div>
 		</div>

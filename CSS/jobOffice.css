@@ -242,6 +242,16 @@ ul#nav li a:active{
 	height: auto;
 	float: left;
 }
+.page-area4{
+	position: absolute;
+	padding: 2%;
+	margin-top: 4%;
+	/*border: 0.05em solid #DCC1CE;*/
+	border-radius: 2em;
+	width: 80%;
+	height: auto;
+	float: left;
+}
 
 .page-area2{
 	position: absolute;
@@ -254,6 +264,18 @@ ul#nav li a:active{
 	height: auto;
 	float: left;
 }
+.page-area3{
+	position: absolute;
+	margin-top: -11%;
+	margin-left: 40%;
+	padding: 1%;
+	/*border: 0.05em solid #DCC1CE;*/
+	border-radius: 2em;
+	width: 40%;
+	height: auto;
+	float: left;
+}
+
 
 .windowBttn{
 	position: relative;

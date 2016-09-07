@@ -1,10 +1,17 @@
 <?php
+	include "../config.php";
 	session_start();
-	if(isset($_SESSION["section"])=="JO"){
-		
+	$_SESSION["section"]="ACC";
+	if(isset($_SESSION["section"])=="ACC"){
+		//$msgCountQ = "SELECT COUNT(*) AS 'inboxCount' FROM messages WHERE (t='ACC' AND readBy='F')";
+		//$msgCount = new DatabaseCon($conn);
+		//$msgRst = $msgCount->getConnection($msgCountQ);
+		//$msgRstRow= $msgCount->getoutput($msgRst);
+		//$inboxCount = $msgRstRow['inboxCount'];
+
 	}
 	else{
-	 header("Location:");
+	// header("Location:index.php");
 	}
 ?>
 <!DOCTYPE html>
@@ -28,7 +35,7 @@
 <body class="body">
 	<?php include 'AccHeader.php'; ?>
 	<div class="pageArea">
-				<div class="contentArea">
+			<div class="contentArea">
 			<a href="message.php">
 			<div class="message-button">
 				<div class="inner-left-corner"><img src="../images/message.png" style="width:100px; height:80px;"></div>
@@ -42,30 +49,30 @@
 			</div>
 			</a>
 			<div class="detail-button-area">
-				<a href="#" id="b2">
+				<a href="#popup1">
 				<div class="contact-button">
 					<div class="inner-mid-corner"><img src="../images/details.png" style="width:30px; height:25px;"></div>
 					<div class="button-text-2">Job Details</div>
 				</div>
 				</a>
-				<a href="#" id="b3">
+				<a href="#" id="b2">
 				<div class="details-button">
 					<div class="inner-mid-corner"><img src="../images/contact.png" style="width:30px; height:25px;"></div>
 					<div class="button-text-2">Contacts</div>
 				</div>
 				</a>
 			</div>
-		</div>
+			</div>
 
 		
 			
-			<div class="page-area1">
+			<div class="page-area4">
 			<div class="windowBttn">
 				<b>Recently Finised Jobs</b>
 			</div>
 			<div class="profInfo">
 				<?php
-					include '../config.php';
+					
                     $sql = "SELECT job_no FROM account WHERE payORnot='F'ORDER BY job_no ";
                     $con = new DatabaseCon($conn);
 					
@@ -74,7 +81,7 @@
                         $count = $con->getRowCount($result);
                        
                         if($count >0){
-                            echo "<table><tr><th> Job No </th><th> JobType </th><th> Section </th><th>Registered Date </th><th></th>";
+                            echo "<table><tr><th> Job No </th><th> JobType </th><th> Section </th><th>Registered Date </th>";
                             while($row = $con->getoutput($result)) {
                          // output data of each row
                             $no=$row["job_no"];
@@ -103,20 +110,20 @@
 				
 			</div>
 			<br>
-			<div class="page-area2">
+			<div class="page-area3">
 			<div class="windowBttn">
 				<b>Recently closed Jobs</b>
 			</div>
 			<div class="profInfo">
 				<?php
 					
-                    $sql1 = "SELECT job_no FROM account WHERE payORnot !='F' ORDER BY gtpass_no DESC LIMIT 10";
+                    $sql1 = "SELECT job_no FROM account WHERE payORnot !='F' ORDER BY gtpass_no DESC LIMIT 5";
 					
                     if ($result = $con->getConnection($sql1)) {
                         $count = $con->getRowCount($result);
                        
                         if($count >0){
-                            echo "<table><tr><th> Job No </th><th> Section </th><th> Amount </th><th>Pay Date </th><th></th>";
+                            echo "<table><tr><th> Job No </th><th> Section </th><th> Amount </th><th>Pay Date </th>";
                             
                             while($row = $con->getoutput($result)) {
                          // output data of each row

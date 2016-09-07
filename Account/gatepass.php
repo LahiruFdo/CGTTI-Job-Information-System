@@ -45,14 +45,39 @@
  <body class="body">
 	<?php include 'AccHeader.php'; ?>
 	<div class="pageArea">
-		<a href='account.php' ><img src="../images/home.jpg" align="right" width="70" higth="70" ></></a>
-<img src="../images/print.jpg" align="right" width="70" higth="70" onclick="printDiv('printableArea')"></>
+		<style>
+			.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 200px;
+    cursor: pointer;
+
+}.button1 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px -200px;
+    cursor: pointer;
+}</style>
+		<a href='account.php' ><button class='button '  >HOME</button></a>
+<button class='button1 ' onclick="printDiv('printableArea')" >PRINT</button>
 <div id="printableArea">
 
 
 
 
-<div id="page-wrap">
+<div id="page-wrap"style="background-color:#fff;border:0.05em solid black; padding:3%;">
 			<p id="headerr">GATE PASS</p>
 
 			<div id="identity">
@@ -74,7 +99,7 @@ Phone: 011-1254325</p>
 			 		<div style="clear:both"></div>
 			 		<div id="customer">
 
-            				<p id="customer-title">Vehicle Repair <?php echo "$no";?></p>
+            				<p id="customer-title">Vehicle Repair <?php echo $no;?></p>
 					</div>
 
 
